@@ -38,8 +38,8 @@ All messages are encoded as JSON, digested with SHA512, signed (*ed25519*), and 
 ```json
 {
   "author": "(base64-encoded ed25519 public key)",
-  "message": "(SHA-512 hash of message JSON)",
-  "signature": "(base64-encoded ed25519 signature)"
+  "message": "(message JSON)",
+  "signature": "(base64-encoded ed25519 signature of SHA-512 hash of message JSON)"
 }
 ```
 

@@ -23,7 +23,7 @@ type SharedMessage32 struct {
 
 // NewSharedMessage32 returns a SharedMessage32 with the given properties
 func NewSharedMessage32(timestamp time.Time, dest string) *SharedMessage32 {
-	return &SharedMessage32{Timestamp: Timestamp(timestamp.UnixNano() / 1000), Mode: "shared", Destination: dest}
+	return &SharedMessage32{Timestamp: Timestamp(timestamp.UnixNano() / 1000000), Mode: "shared", Destination: dest}
 }
 
 // Canonical returns the canonical encoding of the message

@@ -24,7 +24,7 @@ type DirectMessage32 struct {
 
 // NewDirectMessage32 returns a DirectMessage32 with the given properties
 func NewDirectMessage32(timestamp time.Time, dest string) *DirectMessage32 {
-	return &DirectMessage32{Timestamp: Timestamp(timestamp.UnixNano() / 1000), Mode: "direct", Destination: dest}
+	return &DirectMessage32{Timestamp: Timestamp(timestamp.UnixNano() / 1000000), Mode: "direct", Destination: dest}
 }
 
 // Canonical returns canonical encoding of the message

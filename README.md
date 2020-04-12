@@ -33,7 +33,7 @@ SEAM is designed to enable two messaging modes.
 }
 ```
 
-All messages are encoded as JSON, digested with SHA512, signed (*ed25519*), and wrapped in an **envelope** with the signing user's public key.
+All messages are encoded as JSON, digested with SHA512, signed with the `sign` construction (*ed25519*), and wrapped in an **envelope** with the signing user's public key.
 
 ```json
 {

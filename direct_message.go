@@ -57,7 +57,7 @@ func (m *DirectMessage32) WriteBody(bz []byte, recipientDMIdentity *DMIdentity32
 
 	cypherbz := box.Seal(nonce[:], bz, &nonce, &recipientKey, &secretKey)
 
-	m.Body = cypherbz
+	m.Body = cypherbz[24:]
 	m.Nonce24 = nonce[:]
 	m.TransitIdentity = transitKeyPair.PublicKey[:]
 
@@ -71,7 +71,7 @@ func (m *DirectMessage32) Open(recipientDMSecret *DMSecret32) ([]byte, error) {
 	copy(nonce[:], m.Nonce24[:])
 	publicKey := [32]byte{}
 	copy(publicKey[:], m.TransitIdentity)
-	clearbz, ok := box.Open(nil, m.Body[24:], &nonce, &publicKey, &secretKey)
+	clearbz, ok := box.Open(nil, m.Body[:], &nonce, &publicKey, &secretKey)
 	if !ok {
 		return nil, errors.New("Unable to decrypt")
 	}
